@@ -13,8 +13,21 @@ long calculateBrialliance(int **data, int width, int height) {
     return brilliance;
 }
 
-void applyBrilliance(int **data, int height, int width, long brilliance, int *max) {
-    *max += brilliance;
+int getMinimum(int **data, int width, int height) {
+    int min = data[0][0];
+    for(int i = 0; i < height; i++) {
+        for(int j = 0; j < width; j++) {
+            if(data[i][j] < min) {
+                min = data[i][j];
+            }
+        }
+    }
+    return min;
+}
+
+void applyBrilliance(int **data, int height, int width, long brilliance, int percentage, int *max) {
+    long effectiveBrilliance = (brilliance * percentage) / 100;
+    *max += effectiveBrilliance;
     for(int i = 0; i < height; i++) {
         for(int j = 0; j < width; j++) {
             data[i][j] += (int)brilliance;
@@ -37,6 +50,8 @@ void addImages(int **data, int height, int width) {
         }
     }
 }
+
+void addTwoImages
 
 void substractImages(int **data, int height, int width) {
     for(int i = 0; i < height; i++) {
