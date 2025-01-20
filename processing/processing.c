@@ -51,7 +51,13 @@ void addImages(int **data, int height, int width) {
     }
 }
 
-void addTwoImages
+void applyContrast(int **data, int height, int width, int min, int max) {
+    for(int i = 0; i < height; i++) {
+        for(int j = 0; j < width; j++) {
+            data[i][j] = (255 * (data[i][j] - min)) / (max - min);
+        }
+    }
+}
 
 void substractImages(int **data, int height, int width) {
     for(int i = 0; i < height; i++) {
@@ -65,6 +71,18 @@ void multiplyImages(int **data, int height, int width, int ratio) {
     for(int i = 0; i < height; i++) {
         for(int j = 0; j < width; j++) {
             data[i][j] *= ratio;
+        }
+    }
+}
+
+void threshold(int **data, int height, int width, int t) {
+    for(int i = 0; i < height; i++) {
+        for(int j = 0; j < width; j++) {
+            if(data[i][j] >= t) {
+                data[i][j] = 1;
+            } else {
+                data[i][j] = 0;
+            }
         }
     }
 }

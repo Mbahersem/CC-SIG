@@ -1,0 +1,1 @@
+void writePBM(char *fileName, int **data, int height, int width);

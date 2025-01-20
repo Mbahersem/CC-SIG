@@ -13,20 +13,18 @@ void getDimensionsFromPGM(char *fileName, int *height, int *width, int *max) {
         int index = 0;
         fgets(line, sizeof(line), pgmPtr);
         line[strcspn(line, "\n")] = '\0';
-        if(strcmp(line, "P2") == 0) {
+        if(strcmp(line, "P2") == 0 || strcmp(line, "P5") == 0) {
             while(fgets(line, sizeof(line), pgmPtr)) {
                 index++;
                 switch (index) {
                 case 1:
-                    break;
-                case 2:
                     line[strcspn(line, "\n")] = '\0';
                     token = strtok(line, " ");
                     *width = atoi(token);
                     token = strtok(NULL, " ");
                     *height = atoi(token);
                     break;
-                case 3:
+                case 2:
                     line[strcspn(line, "\n")] = '\0';
                     *max = atoi(line);
                     break;
@@ -75,7 +73,7 @@ int readPGM(char *fileName, int **data, int width) {
         int index = 0;
         fgets(line, sizeof(line), pgmPtr);
         line[strcspn(line, "\n")] = '\0';
-        if(strcmp(line, "P2") == 0) {
+        if(strcmp(line, "P2") == 0 || strcmp(line, "P5") == 0) {
             while(fgets(line, sizeof(line), pgmPtr)) {
                 index++;
                 switch (index)
@@ -83,8 +81,6 @@ int readPGM(char *fileName, int **data, int width) {
                 case 1:
                     break;
                 case 2:
-                    break;
-                case 3:
                     break;
                 default:
                     line[strcspn(line, "\n")] = '\0';
