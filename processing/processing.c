@@ -86,3 +86,22 @@ void threshold(int **data, int height, int width, int t) {
         }
     }
 }
+
+void lowPass(int **data, int height, int width) {
+
+}
+
+void highPass(int **data, int **output, int height, int width, int t) {
+    int filter[3][3] = {{0, -1, 0}, {-1, 4, -1}, {0, -1, 0}};
+    int i, j, m, n;
+    for(i = 0; i < height; i++) {
+        for(j = 0; j < width; j++) {
+            output[i][j] = 0;
+            for(m = 0; m < 3; m++) {
+                for(n = 0; n < 3; n++) {
+
+                }
+            }
+        }
+    }   
+}
